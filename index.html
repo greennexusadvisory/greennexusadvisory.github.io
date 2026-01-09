@@ -1,423 +1,577 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Green Nexus Advisory (GNA)</title>
-  <meta name="description" content="Green Nexus Advisory supports environmental governance, energy transition, and local development in Albania and the Western Balkans." />
+  <title>Green Nexus Advisory (GNA) | Environmental governance • Energy transition • Local development</title>
+  <meta name="description" content="Green Nexus Advisory (GNA) empowers institutions, communities, and development partners to design, implement, and evaluate transformative policies in environmental governance, energy transition, and local development across Albania and the Western Balkans." />
 
   <style>
-    /* ===== Oxford-style palette ===== */
     :root{
       --bg:#ffffff;
+      --text:#0f172a;      /* slate-900 */
+      --muted:#475569;     /* slate-600 */
+      --line:#e2e8f0;      /* slate-200 */
+      --card:#ffffff;
+      --shadow: 0 10px 28px rgba(2,6,23,.08);
+      --radius: 18px;
+      --max: 1120px;
 
-      /* Text */
-      --text:#1a1a1a;            /* deep charcoal */
-      --muted:#6c6c6c;           /* neutral grey */
-
-      /* Surfaces */
-      --card:#fafafa;            /* very light grey */
-      --line:#e6e6e6;            /* subtle divider */
-
-      /* Accent */
-      --accent:#00848a;          /* deep teal */
-      --accent2:#00a99d;         /* lighter teal for hover */
-
-      /* UI */
-      --radius:18px;
-      --shadow: 0 14px 32px rgba(0,0,0,0.08);
+      /* Optional accent (safe default). You can replace with your brand color */
+      --accent:#0ea5e9;    /* sky-500 */
+      --accent-2:#10b981;  /* emerald-500 */
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
       background:var(--bg);
-      color:var(--text);
-      line-height:1.7;
-      font-size:17px;
+      line-height:1.55;
     }
 
-    a{color:var(--accent); text-decoration:none}
-    a:hover{color:var(--accent2); text-decoration:underline}
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    .wrap{max-width:1100px; margin:0 auto; padding:18px 16px 72px}
-    .muted{color:var(--muted)}
-
-    /* Typography: slightly editorial headings */
-    h1, h2, h3{
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-      color:var(--text);
-      font-weight:650;
-      letter-spacing:-0.2px;
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px 56px;
     }
 
-    /* Sticky header */
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(255,255,255,.88);
-      backdrop-filter:saturate(140%) blur(10px);
-      border-bottom:1px solid var(--line);
-    }
+    /* Header */
     header{
-      max-width:1100px;
-      margin:0 auto;
-      padding:12px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:16px;
+      padding: 10px 0 16px;
+      border-bottom:1px solid var(--line);
       flex-wrap:wrap;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 10;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
-      min-width:260px;
+      min-width: 260px;
     }
+
     .logo{
-      height:46px;
-      width:auto;
-      display:block;
+      width:42px;
+      height:42px;
+      object-fit:contain;
     }
+
     .brand-text strong{
       display:block;
-      font-size:18px;
-      line-height:1.15;
-      letter-spacing:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:800;
+      font-size: 15px;
+      letter-spacing:.2px;
     }
     .brand-text small{
       display:block;
       color:var(--muted);
-      font-size:13px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:600;
+      font-size: 12.5px;
+      margin-top:2px;
     }
 
     nav{
       display:flex;
-      gap:6px;
-      flex-wrap:wrap;
       align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    nav a.navlink{
-      color:var(--muted);
-      font-weight:700;
+
+    .navlink{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:9px 12px;
-      border-radius:999px;
-      transition: background .2s ease, color .2s ease, border-color .2s ease;
+      border:1px solid transparent;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13.5px;
+      background: transparent;
     }
-    nav a.navlink:hover{
-      background:rgba(0,132,138,.08);
-      color:var(--accent);
+    .navlink:hover{
+      border-color: var(--line);
+      color: var(--text);
       text-decoration:none;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: #fff;
+      font-weight: 600;
+      font-size: 13.5px;
+      box-shadow: 0 8px 16px rgba(2,6,23,.05);
+      text-decoration:none;
+    }
+    .btn:hover{ text-decoration:none; border-color: rgba(14,165,233,.45); }
+
+    .btn.primary{
+      border-color: rgba(14,165,233,.55);
+      background: linear-gradient(135deg, rgba(14,165,233,.10), rgba(16,185,129,.08));
+    }
+
+    /* Hero */
+    .hero{
+      padding: 34px 0 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .hero h1{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -.6px;
+    }
+    .hero p{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+
+    .hero-card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      background: var(--card);
+    }
+    .hero-card h3{
+      margin:0 0 8px;
+      font-size: 14px;
+      letter-spacing:.2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 14.5px;
+    }
+    .hero-card li{ margin: 8px 0; }
+
+    .cta-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+
+    /* Sections */
+    section{ padding: 18px 0; }
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:14px;
+      margin: 18px 0 12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:-.2px;
+    }
+    .section-title p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--card);
+      padding: 16px 16px 14px;
+    }
+
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+    .card p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14.5px;
     }
 
     .pill{
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:9px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      color:var(--muted);
-      font-weight:800;
-      font-size:14px;
-      transition: border-color .2s ease, color .2s ease, background .2s ease;
-    }
-    .pill:hover{
-      border-color:rgba(0,132,138,.35);
-      color:var(--accent);
-      background:rgba(0,132,138,.05);
-      text-decoration:none;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12.5px;
+      margin-top: 8px;
+      background: #fff;
     }
 
-    /* Hero */
-    .hero{
-      margin-top:18px;
-      border:1px solid var(--line);
-      border-radius:22px;
-      overflow:hidden;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.78)),
-        url("assets/photo-1.jpg");
-      background-size:cover;
-      background-position:center;
-      box-shadow:var(--shadow);
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 14.5px;
     }
-    .heroInner{padding:28px 22px}
+    .list li{ margin: 6px 0; }
 
-    .kicker{
-      font-size:12px;
-      font-weight:900;
-      letter-spacing:.7px;
-      text-transform:uppercase;
-      color:var(--accent);
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .kicker:before{
-      content:"";
-      width:10px; height:10px;
-      border-radius:999px;
-      background:var(--accent);
-      box-shadow:0 0 0 4px rgba(0,132,138,.12);
-      display:inline-block;
-    }
-
-    h1{
-      margin:14px 0 12px;
-      font-size:42px;
-      line-height:1.12;
-    }
-    .lead{
-      margin:0;
-      color:var(--muted);
-      max-width:900px;
-      font-size:18px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-
-    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:14px;
-      border:1px solid var(--accent);
-      background:var(--accent);
-      color:#fff;
-      font-weight:800;
-      box-shadow:0 10px 18px rgba(0,132,138,.18);
-      transition: background .2s ease, border-color .2s ease, transform .15s ease;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .btn:hover{
-      text-decoration:none;
-      background:var(--accent2);
-      border-color:var(--accent2);
-      transform: translateY(-1px);
-    }
-    .btn.secondary{
-      background:#fff;
-      color:var(--accent);
-      box-shadow:none;
-    }
-    .btn.secondary:hover{
-      background:rgba(0,132,138,.08);
-      border-color:rgba(0,132,138,.35);
-      color:var(--accent);
-      transform: translateY(-1px);
-    }
-
-    /* Sections */
-    section{padding:38px 0; scroll-margin-top:100px}
-    h2{margin:0 0 12px; font-size:24px}
-    .grid{display:grid; gap:16px}
-    @media(min-width:900px){ .cols2{grid-template-columns:1fr 1fr} }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:20px;
-      box-shadow:var(--shadow);
-      transition: transform .18s ease, border-color .18s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(0,132,138,.22);
-    }
-
-    .card h3{
-      margin:0 0 10px;
-      font-size:18px;
-    }
-    p{margin:0; color:var(--muted)}
-    ul{margin:10px 0 0; padding-left:18px}
-    li{margin:8px 0; color:var(--muted)}
-
-    /* Services band */
-    .band{
-      border:1px solid var(--line);
-      border-radius:22px;
-      overflow:hidden;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.84)),
-        url("assets/photo-2.jpg");
-      background-size:cover;
-      background-position:center;
-      box-shadow:var(--shadow);
-    }
-    .bandInner{padding:18px}
+    /* Layout spans */
+    .span-12{ grid-column: span 12; }
+    .span-8{ grid-column: span 8; }
+    .span-6{ grid-column: span 6; }
+    .span-4{ grid-column: span 4; }
 
     /* Footer */
     footer{
-      margin-top:38px;
-      padding-top:16px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      gap:10px;
-      flex-wrap:wrap;
-      font-size:14px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .muted{ color: var(--muted); }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .span-8, .span-6, .span-4{ grid-column: span 12; }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
+  <div class="wrap">
     <header>
       <div class="brand">
-        <img src="assets/logo.png" class="logo"
-             onerror="this.style.display='none';" />
+        <img src="assets/logo.png" alt="Green Nexus Advisory logo" class="logo" />
         <div class="brand-text">
-          <strong>Green Nexus Advisory (GNA)</strong>
+          <strong>Green Nexus Advisory</strong>
           <small>Environmental governance • Energy transition • Local development</small>
         </div>
       </div>
 
-      <nav>
+      <nav aria-label="Primary navigation">
         <a class="navlink" href="#who">Who we are</a>
         <a class="navlink" href="#services">Services</a>
         <a class="navlink" href="#projects">Experience</a>
         <a class="navlink" href="#contact">Contact</a>
-        <a class="pill" href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="pill" href="https://x.com/" target="_blank" rel="noopener">X</a>
+
+        <a class="navlink" href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+
+        <!-- Replace with your real X (Twitter) link when available -->
+        <a class="navlink" href="https://x.com/" target="_blank" rel="noopener">
+          X
+        </a>
+
+        <a class="btn primary" href="#contact">Work with us</a>
       </nav>
     </header>
-  </div>
 
-  <div class="wrap">
-    <div class="hero">
-      <div class="heroInner">
-        <div class="kicker">Consultancy • Albania & Western Balkans</div>
-        <h1>Transformative policy support for sustainable, just, and resilient systems.</h1>
-        <p class="lead">
-          Green Nexus Advisory helps institutions, communities, and development partners design, implement, and evaluate policies
-          across environmental governance, energy transition, and local development.
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <h1>Strategic advisory for governance, environment, and energy transition.</h1>
+
+        <p>
+          Green Nexus Advisory empowers institutions, communities, and development partners to design, implement, and evaluate
+          transformative policies in environmental governance, energy transition, and local development. We bridge knowledge
+          and practice to build sustainable, just, and resilient systems in Albania, the Western Balkans, and beyond.
         </p>
-        <div class="btnRow">
-          <a class="btn" href="#contact">Contact us</a>
-          <a class="btn secondary" href="#services">Explore services</a>
+        <!-- Source: Mission statement -->
+        <!-- :contentReference[oaicite:0]{index=0} -->
+
+        <div class="cta-row">
+          <a class="btn primary" href="#services">Explore services</a>
+          <a class="btn" href="#projects">See experience</a>
+          <a class="btn" href="#contact">Contact</a>
         </div>
       </div>
-    </div>
 
+      <aside class="hero-card" aria-label="Quick facts">
+        <h3>Focus areas</h3>
+        <ul>
+          <li>Environmental & climate governance</li>
+          <li>Energy policy & transition planning</li>
+          <li>Institutional capacity & local governance</li>
+          <li>Research, evaluation & impact studies</li>
+          <li>Strategic planning & donor engagement</li>
+        </ul>
+        <span class="pill">Tirana-based • Albania & Western Balkans</span>
+      </aside>
+    </section>
+
+    <!-- WHO WE ARE -->
     <section id="who">
-      <h2>Who we are</h2>
-      <div class="grid cols2">
-        <div class="card">
-          <h3>Profile</h3>
+      <div class="section-title">
+        <h2>Who we are</h2>
+        <p>Company profile</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-8">
+          <h3>About Green Nexus Advisory</h3>
           <p>
-            Tirana-based expert collective specialized in strategic consulting at the intersection of governance, environment, and energy.
-            We support governments, donors, NGOs, and academic institutions with evidence-based delivery.
+            Green Nexus Advisory is a Tirana-based expert collective specialized in strategic consulting at the intersection
+            of governance, environment, and energy. Founded by senior adviser Dr. Elton Qendro, with over 20 years of experience
+            in national and regional development, GNA offers tailored expertise to governments, donors, NGOs, and academic institutions.
           </p>
+          <!-- :contentReference[oaicite:1]{index=1} -->
+
+          <p>
+            We bring deep, applied knowledge in policy development, institutional analysis, climate security, and decentralized governance,
+            with a focus on delivering measurable results, facilitating inclusive processes, and strengthening public institutions across
+            multiple sectors.
+          </p>
+          <!-- :contentReference[oaicite:2]{index=2} -->
+
+          <span class="pill">Evidence-based • Inclusive • Results-oriented</span>
         </div>
-        <div class="card">
-          <h3>How we work</h3>
-          <ul>
-            <li>Evidence-driven analysis</li>
-            <li>Inclusive stakeholder engagement</li>
-            <li>Practical implementation roadmaps</li>
-            <li>Monitoring, evaluation, and learning</li>
-          </ul>
+
+        <div class="card span-4">
+          <h3>Mission</h3>
+          <p>
+            To empower institutions, communities, and development partners with practical, high-quality advisory services that advance
+            sustainability, resilience, and effective governance.
+          </p>
+          <p class="muted" style="margin-top:10px;font-size:13.5px;">
+            We bridge knowledge and practice across Albania, the Western Balkans, and beyond.
+          </p>
+          <!-- :contentReference[oaicite:3]{index=3} -->
         </div>
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section id="services">
-      <div class="band">
-        <div class="bandInner">
-          <h2>Core services</h2>
-          <div class="grid cols2">
-            <div class="card">
-              <h3>Environment & climate governance</h3>
-              <ul>
-                <li>Environmental policy design and reform</li>
-                <li>EU environmental directives compliance</li>
-                <li>Climate adaptation and risk governance</li>
-                <li>Aarhus & Espoo implementation support</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Energy transition planning</h3>
-              <ul>
-                <li>NECP evaluation and implementation support</li>
-                <li>Renewable energy policy support</li>
-                <li>Socio-environmental assessments</li>
-                <li>Public consultation & engagement</li>
-              </ul>
-            </div>
-          </div>
+      <div class="section-title">
+        <h2>Services</h2>
+        <p>Core services</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6">
+          <h3>Environment & Climate Governance</h3>
+          <p>Support across policy design, compliance, and risk governance.</p>
+          <ul class="list">
+            <li>Environmental policy design and reform</li>
+            <li>Compliance with EU environmental directives (Chapter 27)</li>
+            <li>Climate adaptation, environmental crime, and risk governance</li>
+            <li>Strategic support for Aarhus and Espoo Convention implementation</li>
+          </ul>
+          <!-- :contentReference[oaicite:4]{index=4} -->
+        </div>
+
+        <div class="card span-6">
+          <h3>Energy Policy & Transition Planning</h3>
+          <p>Energy planning and transition advisory with strong stakeholder engagement.</p>
+          <ul class="list">
+            <li>National Energy & Climate Plan (NECP) evaluation</li>
+            <li>Renewable energy policy support</li>
+            <li>Socio-environmental assessment of hydropower development</li>
+            <li>Public consultation and stakeholder engagement in energy planning</li>
+          </ul>
+          <!-- :contentReference[oaicite:5]{index=5} -->
+        </div>
+
+        <div class="card span-6">
+          <h3>Institutional Capacity & Local Governance</h3>
+          <p>Strengthening institutions, decentralization, and local service delivery.</p>
+          <ul class="list">
+            <li>Decentralization policy support and fiscal reform</li>
+            <li>Mining royalty and local finance strategies</li>
+            <li>Municipal service delivery improvement</li>
+            <li>Capacity building and training for public officials</li>
+          </ul>
+          <!-- :contentReference[oaicite:6]{index=6} -->
+        </div>
+
+        <div class="card span-6">
+          <h3>Research, Evaluation & Impact Studies</h3>
+          <p>Evidence, evaluation, and performance frameworks aligned with donor standards.</p>
+          <ul class="list">
+            <li>Baseline, midline, and impact evaluations</li>
+            <li>Stakeholder analysis and perception studies</li>
+            <li>EU PRAG-compliant procurement & project appraisal</li>
+            <li>Monitoring frameworks and project performance reviews</li>
+          </ul>
+          <!-- :contentReference[oaicite:7]{index=7} -->
+        </div>
+
+        <div class="card span-12">
+          <h3>Strategic Planning & Donor Engagement</h3>
+          <p>From priorities to implementable programs: roadmaps, facilitation, and funding strategy.</p>
+          <ul class="list">
+            <li>Policy roadmaps and action plans</li>
+            <li>Multi-stakeholder dialogue facilitation</li>
+            <li>Project concept notes, TORs, funding strategies</li>
+            <li>Regional and cross-border programming</li>
+          </ul>
+          <!-- :contentReference[oaicite:8]{index=8} -->
         </div>
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="projects">
-      <h2>Experience</h2>
-      <div class="grid cols2">
-        <div class="card">
-          <ul>
-            <li><b style="color:var(--text);">Environmental governance:</b> coordination, compliance, enforcement support.</li>
-            <li><b style="color:var(--text);">NECP review:</b> alignment, gaps, and participation opportunities.</li>
-            <li><b style="color:var(--text);">Impact evaluation:</b> programme and infrastructure evaluations.</li>
-          </ul>
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>Selected highlights</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-4">
+          <h3>Environmental Governance (Albania)</h3>
+          <p>
+            Led multi-year initiatives on environmental governance, environmental crime, Aarhus Convention implementation,
+            and impact assessment frameworks.
+          </p>
+          <!-- :contentReference[oaicite:9]{index=9} -->
+          <span class="pill">Governance • Enforcement • Participation</span>
         </div>
-        <div class="card">
-          <ul>
-            <li><b style="color:var(--text);">Environmental crime:</b> strategy and institutional capacity support.</li>
-            <li><b style="color:var(--text);">Decentralization:</b> institutional gap analysis and recommendations.</li>
-            <li><b style="color:var(--text);">Stakeholder mapping:</b> multi-municipality engagement.</li>
-          </ul>
+
+        <div class="card span-4">
+          <h3>Energy & Climate Plan Review (GIZ, 2024)</h3>
+          <p>
+            Evaluated Albania’s NECP alignment with EU goals; identified policy gaps and opportunities for stakeholder participation.
+          </p>
+          <!-- :contentReference[oaicite:10]{index=10} -->
+          <span class="pill">NECP • EU alignment • Stakeholders</span>
+        </div>
+
+        <div class="card span-4">
+          <h3>Impact Evaluation (ADF / World Bank)</h3>
+          <p>
+            Led evaluation of the Rural Roads Project and 100 Villages Program, delivering data-driven policy recommendations.
+          </p>
+          <!-- :contentReference[oaicite:11]{index=11} -->
+          <span class="pill">Evaluation • Evidence • Policy</span>
+        </div>
+
+        <div class="card span-6">
+          <h3>Environmental Crime Strategy</h3>
+          <p>
+            Co-authored national strategy and built institutional capacities for environmental enforcement.
+          </p>
+          <!-- :contentReference[oaicite:12]{index=12} -->
+          <span class="pill">Strategy • Capacity building</span>
+        </div>
+
+        <div class="card span-6">
+          <h3>Decentralization Reform (UNDP Iraq / EU)</h3>
+          <p>
+            Provided institutional gap analysis and developed recommendations for local governance and agriculture reforms in Iraq.
+          </p>
+          <!-- :contentReference[oaicite:13]{index=13} -->
+          <span class="pill">Institutions • Reform • Local governance</span>
+        </div>
+
+        <div class="card span-6">
+          <h3>Stakeholder Mapping (IUCN Vjosa River)</h3>
+          <p>
+            Mapped institutional and community stakeholders across nine municipalities in the Vjosa basin.
+          </p>
+          <!-- :contentReference[oaicite:14]{index=14} -->
+          <span class="pill">Mapping • Municipalities</span>
+        </div>
+
+        <div class="card span-6">
+          <h3>Climate Adaptation & DRR (Regional)</h3>
+          <p>
+            Designed participatory resilience planning tools in Albania and the Western Balkans as part of a regional climate program.
+          </p>
+          <!-- :contentReference[oaicite:15]{index=15} -->
+          <span class="pill">Resilience • DRR • Regional</span>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact</h2>
-      <div class="grid cols2">
-        <div class="card">
-          <p><b style="color:var(--text);">Green Nexus Advisory</b></p>
-          <p style="margin-top:8px;">Tirana, Albania</p>
-          <p style="margin-top:8px;">Email: <a href="mailto:greennexusadvisory@gmail.com">greennexusadvisory@gmail.com</a></p>
-          <p style="margin-top:8px;">Website: <a href="https://greennexusadvisory.com/" target="_blank" rel="noopener">greennexusadvisory.com</a></p>
-        </div>
-        <div class="card">
-          <p>For partnerships, tenders, research collaboration, or training requests, reach out by email or LinkedIn.</p>
-          <div class="btnRow" style="margin-top:14px;">
-            <a class="btn" href="mailto:greennexusadvisory@gmail.com?subject=Inquiry%20%E2%80%93%20Green%20Nexus%20Advisory">Send email</a>
-            <a class="btn secondary" href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">Message on LinkedIn</a>
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Let’s talk</p>
+      </div>
+
+      <div class="grid">
+        <div class="card span-8">
+          <h3>Green Nexus Advisory</h3>
+          <p class="muted" style="margin-bottom:12px;">Tirana, Albania</p>
+          <!-- :contentReference[oaicite:16]{index=16} -->
+
+          <p style="margin:0 0 10px;">
+            <strong>Email:</strong>
+            <a href="mailto:greennexusadvisory@gmail.com">greennexusadvisory@gmail.com</a>
+          </p>
+          <!-- :contentReference[oaicite:17]{index=17} -->
+
+          <p style="margin:0 0 10px;">
+            <strong>Website:</strong>
+            <a href="https://greennexusadvisory.com/" target="_blank" rel="noopener">greennexusadvisory.com</a>
+          </p>
+          <!-- :contentReference[oaicite:18]{index=18} -->
+
+          <div class="cta-row" style="margin-top:14px;">
+            <a class="btn primary" href="mailto:greennexusadvisory@gmail.com?subject=Inquiry%20-%20Green%20Nexus%20Advisory">Email us</a>
+            <a class="btn" href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://x.com/" target="_blank" rel="noopener">X</a>
           </div>
+        </div>
+
+        <div class="card span-4">
+          <h3>Working model</h3>
+          <p>
+            We support governments, donors, NGOs, and academic institutions with tailored expertise, grounded in evidence and
+            focused on measurable results and inclusive processes.
+          </p>
+          <!-- :contentReference[oaicite:19]{index=19} -->
+          <span class="pill">Consulting • Research • Evaluation</span>
         </div>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="y"></span> Green Nexus Advisory (GNA)</div>
-      <div>
-        <a href="#who">Who</a> ·
-        <a href="#services">Services</a> ·
-        <a href="#projects">Experience</a> ·
-        <a href="#contact">Contact</a>
+      <div>© <span id="year"></span> Green Nexus Advisory (GNA). All rights reserved.</div>
+      <div class="muted">
+        <a href="#top">Back to top</a>
       </div>
     </footer>
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // Tiny helper: update copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-

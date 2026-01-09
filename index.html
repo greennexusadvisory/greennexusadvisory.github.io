@@ -4,221 +4,294 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Green Nexus Advisory (GNA)</title>
+  <meta name="description" content="Green Nexus Advisory supports environmental governance, energy transition, and local development in Albania and the Western Balkans." />
 
   <style>
     :root{
       --bg:#ffffff;
-      --card:#f7f9f8;
       --text:#0f2a22;
       --muted:#5f7f74;
-      --accent:#2fbf9e;
-      --accent2:#6ccfa8;
+      --card:#f7f9f8;
       --line:#e2ece8;
-      --shadow: 0 10px 30px rgba(15, 42, 34, 0.08);
-      --radius: 16px;
-
-      /* These will be set by JS */
-      --bgHero: none;
-      --bgSection: none;
+      --accent:#2fbf9e;
+      --radius:14px;
+      --shadow: 0 10px 24px rgba(15, 42, 34, 0.08);
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.6;
     }
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-    .wrap{ max-width:1100px; margin:0 auto; padding:24px 20px 64px; }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1000px; margin:0 auto; padding:22px 16px 70px}
 
-    .top{
-      position:sticky; top:0; z-index:20;
-      background:rgba(255,255,255,.86);
-      backdrop-filter:saturate(150%) blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .topInner{
-      max-width:1100px; margin:0 auto;
+    /* Header */
+    header{
       display:flex; align-items:center; justify-content:space-between; gap:16px;
-      padding:14px 20px; flex-wrap:wrap;
+      padding:12px 0 16px;
+      border-bottom:1px solid var(--line);
+      flex-wrap:wrap;
     }
-    .brand{ display:flex; align-items:center; gap:14px; min-width:260px; }
-    .brand img{ height:46px; width:auto; display:block; }
-    .brand b{ font-size:18px; letter-spacing:.2px; }
-    .brand span{ font-size:13px; color:var(--muted); }
-
-    .nav{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .nav a{
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{height:44px; width:auto}
+    .brand strong{display:block; font-size:18px}
+    .brand small{color:var(--muted)}
+    nav{display:flex; gap:10px; flex-wrap:wrap}
+    nav a{
       color:var(--muted);
-      font-size:14px;
-      font-weight:700;
-      padding:8px 10px;
+      font-weight:600;
+      padding:7px 10px;
       border-radius:999px;
-      border:1px solid transparent;
     }
-    .nav a:hover{
-      border-color:var(--line);
-      text-decoration:none;
-      color:var(--text);
-      background:var(--card);
-    }
-    .nav .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      color:var(--muted);
-      font-weight:800;
-    }
-    .nav .pill:hover{ border-color:var(--accent); color:var(--accent); text-decoration:none; }
+    nav a:hover{background:var(--card); color:var(--text); text-decoration:none}
 
-    .heroShell{
+    /* Hero */
+    .hero{
       margin-top:18px;
-      border-radius:24px;
-      overflow:hidden;
       border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      background-image:
-        linear-gradient(90deg, rgba(255,255,255,.94), rgba(255,255,255,.70)),
-        var(--bgHero);
-      background-size: cover;
-      background-position: center;
-      background-repeat:no-repeat;
+      border-radius:18px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,.70)),
+        url("assets/photo-1.jpg");
+      background-size:cover;
+      background-position:center;
     }
-    .hero{ padding:30px 20px 24px; }
+    .heroInner{padding:22px 18px}
     .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      color:var(--accent);
-      font-weight:900;
-      letter-spacing:.6px;
       font-size:12px;
+      font-weight:800;
+      letter-spacing:.6px;
       text-transform:uppercase;
+      color:var(--accent);
     }
-    .kicker:before{
-      content:"";
-      width:10px; height:10px; border-radius:999px;
-      background:linear-gradient(135deg, var(--accent), var(--accent2));
+    h1{margin:10px 0 8px; font-size:34px; line-height:1.15}
+    .lead{margin:0; color:var(--muted); max-width:820px}
+    .btnRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
       display:inline-block;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--accent);
+      background:var(--accent);
+      color:#fff;
+      font-weight:700;
     }
-    h1{ margin:12px 0 10px; font-size:40px; line-height:1.12; letter-spacing:-.3px; }
-    .lead{ max-width:920px; font-size:18px; color:var(--muted); margin:0; }
+    .btn.secondary{background:#fff; color:var(--accent)}
+    .btn:hover{text-decoration:none; filter:brightness(.98)}
+
+    /* Sections */
+    section{padding:28px 0; scroll-margin-top:90px}
+    h2{margin:0 0 10px; font-size:22px}
+    .grid{display:grid; gap:14px}
+    @media(min-width:860px){ .grid.cols2{grid-template-columns:1fr 1fr} }
 
     .card{
-      background:rgba(247,249,248,.92);
+      background:var(--card);
       border:1px solid var(--line);
       border-radius:var(--radius);
-      padding:18px;
-      box-shadow: var(--shadow);
+      padding:16px;
+      box-shadow:var(--shadow);
     }
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:6px 0; color:var(--muted)}
+    p{margin:0; color:var(--muted)}
 
-    .bgBand{
-      margin:18px 0 0;
-      border-radius:24px;
-      overflow:hidden;
+    /* Services band with photo-2 */
+    .band{
       border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      background-image:
-        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.78)),
-        var(--bgSection);
-      background-size: cover;
-      background-position: center;
-      background-repeat:no-repeat;
+      border-radius:18px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.78)),
+        url("assets/photo-2.jpg");
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--shadow);
     }
-    .bgBandInner{ padding:26px 20px; }
+    .bandInner{padding:18px}
 
-    .section{ padding:36px 0; scroll-margin-top:100px; }
+    /* Footer */
+    footer{
+      margin-top:30px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      font-size:14px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="top">
-    <div class="topInner">
+  <div class="wrap">
+    <header>
       <div class="brand">
-        <img id="logo" src="" alt="Green Nexus Advisory logo" />
+        <img src="assets/logo.png" alt="Green Nexus Advisory logo">
         <div>
-          <b>Green Nexus Advisory (GNA)</b><br />
-          <span>Environmental governance • Energy transition • Local development</span>
+          <strong>Green Nexus Advisory (GNA)</strong>
+          <small>Environmental governance • Energy transition • Local development</small>
         </div>
       </div>
 
-      <div class="nav">
+      <nav>
         <a href="#who">Who we are</a>
         <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
+        <a href="#projects">Experience</a>
         <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- Replace with your real X link -->
+        <a href="https://x.com/" target="_blank" rel="noopener">X</a>
+      </nav>
+    </header>
 
-        <a class="pill" href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="pill" href="https://x.com/" target="_blank" rel="noopener">X</a>
+    <div class="hero">
+      <div class="heroInner">
+        <div class="kicker">Consultancy • Albania & Western Balkans</div>
+        <h1>Transformative policy support for sustainable, just, and resilient systems.</h1>
+        <p class="lead">
+          Green Nexus Advisory empowers institutions, communities, and development partners to design,
+          implement, and evaluate transformative policies in environmental governance, energy transition,
+          and local development.
+        </p>
+
+        <div class="btnRow">
+          <a class="btn" href="#contact">Contact us</a>
+          <a class="btn secondary" href="#services">See services</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="wrap">
-    <div class="heroShell">
-      <div class="hero">
-        <div class="kicker">Consultancy • Albania & Western Balkans</div>
-        <h1>Evidence-based support for a greener, safer, and more resilient transition.</h1>
-        <p class="lead">If backgrounds don’t show, it’s almost always a path or filename mismatch on GitHub Pages.</p>
+    <section id="who">
+      <h2>Who we are</h2>
+      <div class="grid cols2">
+        <div class="card">
+          <p>
+            Green Nexus Advisory is a Tirana-based expert collective specialized in strategic consulting at the intersection
+            of governance, environment, and energy. Founded by senior adviser Dr. Elton Qendro (20+ years of experience),
+            GNA supports governments, donors, NGOs, and academic institutions.
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            We bring applied knowledge in policy development, institutional analysis, climate security, and decentralized governance—
+            focused on measurable results, inclusive processes, and strengthened public institutions across sectors.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <div class="card" style="margin-top:16px;">
-          <b>Tip:</b> Try opening these in your browser:
-          <div style="color:var(--muted); font-size:14px; margin-top:6px;">
-            <span id="debugLogo"></span><br/>
-            <span id="debugBg1"></span><br/>
-            <span id="debugBg2"></span>
+    <section id="services">
+      <div class="band">
+        <div class="bandInner">
+          <h2>Core services</h2>
+          <div class="grid cols2">
+            <div class="card">
+              <h3 style="margin:0 0 8px; color:var(--text);">Environment & climate governance</h3>
+              <ul>
+                <li>Environmental policy design and reform</li>
+                <li>EU environmental directives compliance (Chapter 27)</li>
+                <li>Climate adaptation, environmental crime & risk governance</li>
+                <li>Aarhus & Espoo Convention implementation support</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 style="margin:0 0 8px; color:var(--text);">Energy policy & transition planning</h3>
+              <ul>
+                <li>NECP evaluation and implementation support</li>
+                <li>Renewable energy policy support</li>
+                <li>Socio-environmental assessment of hydropower development</li>
+                <li>Public consultation & stakeholder engagement</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 style="margin:0 0 8px; color:var(--text);">Institutional capacity & local governance</h3>
+              <ul>
+                <li>Decentralization policy support and fiscal reform</li>
+                <li>Mining royalty and local finance strategies</li>
+                <li>Municipal service delivery improvement</li>
+                <li>Capacity building and training for public officials</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 style="margin:0 0 8px; color:var(--text);">Research, evaluation & donor engagement</h3>
+              <ul>
+                <li>Baseline, midline, and impact evaluations</li>
+                <li>Stakeholder analysis and perception studies</li>
+                <li>EU PRAG-compliant procurement & project appraisal</li>
+                <li>Policy roadmaps, TORs, concept notes, funding strategies</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section" id="who">
-      <h2>Who we are</h2>
-      <div class="card">...</div>
-    </div>
-
-    <div class="bgBand">
-      <div class="bgBandInner section" id="services" style="padding:0;">
-        <h2>Services</h2>
-        <div class="card">...</div>
+    <section id="projects">
+      <h2>Past experience highlights</h2>
+      <div class="grid cols2">
+        <div class="card">
+          <ul>
+            <li><b style="color:var(--text);">Environmental Governance (Albania):</b> multi-year initiatives on environmental governance, environmental crime, Aarhus implementation, and impact assessment frameworks.</li>
+            <li><b style="color:var(--text);">Energy & Climate Plan Review (GIZ, 2024):</b> NECP alignment with EU goals; policy gaps and participation opportunities.</li>
+            <li><b style="color:var(--text);">Impact Evaluation (ADF / World Bank):</b> Rural Roads Project and 100 Villages Program evaluation.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li><b style="color:var(--text);">Environmental Crime Strategy:</b> co-authored strategy and strengthened enforcement capacities.</li>
+            <li><b style="color:var(--text);">Decentralization Reform (UNDP Iraq / EU):</b> institutional gap analysis and recommendations.</li>
+            <li><b style="color:var(--text);">Stakeholder Mapping (IUCN Vjosa River):</b> mapping across 9 municipalities in the Vjosa basin.</li>
+            <li><b style="color:var(--text);">Climate Adaptation & DRR (Regional):</b> participatory resilience planning tools in Albania & Western Balkans.</li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section" id="projects">
-      <h2>Projects</h2>
-      <div class="card">...</div>
-    </div>
-
-    <div class="section" id="contact">
+    <section id="contact">
       <h2>Contact</h2>
-      <div class="card">...</div>
-    </div>
+      <div class="grid cols2">
+        <div class="card">
+          <p><b style="color:var(--text);">Green Nexus Advisory</b></p>
+          <p style="margin-top:8px;">Tirana, Albania</p>
+          <p style="margin-top:8px;">Email: <a href="mailto:greennexusadvisory@gmail.com">greennexusadvisory@gmail.com</a></p>
+          <p style="margin-top:8px;">Website: <a href="https://greennexusadvisory.com/" target="_blank" rel="noopener">greennexusadvisory.com</a></p>
+        </div>
+
+        <div class="card">
+          <p>For partnerships, tenders, research collaboration, or training requests, reach out by email or LinkedIn.</p>
+          <div class="btnRow" style="margin-top:14px;">
+            <a class="btn" href="mailto:greennexusadvisory@gmail.com?subject=Inquiry%20%E2%80%93%20Green%20Nexus%20Advisory">Send email</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/green-nexus-advisory-581677380" target="_blank" rel="noopener">Message on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Green Nexus Advisory (GNA)</div>
+      <div>
+        <a href="#who">Who</a> ·
+        <a href="#services">Services</a> ·
+        <a href="#projects">Experience</a> ·
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
   </div>
 
   <script>
-    // ✅ EDIT THIS ONLY IF YOU ARE USING A PROJECT SITE:
-    // If your URL looks like: https://username.github.io/REPO_NAME/
-    // then set REPO_NAME = "REPO_NAME"
-    // If your URL looks like: https://username.github.io/ (user site) then keep it "".
-    const REPO_NAME = ""; // e.g. "green-nexus-advisory"
-
-    const base = REPO_NAME ? `/${REPO_NAME}` : "";
-    const logo = `${base}/assets/logo.png`;
-    const bg1  = `${base}/assets/photo-1.jpg`;
-    const bg2  = `${base}/assets/photo-2.jpg`;
-
-    document.getElementById("logo").src = logo;
-    document.documentElement.style.setProperty("--bgHero", `url("${bg1}")`);
-    document.documentElement.style.setProperty("--bgSection", `url("${bg2}")`);
-
-    // Debug links (click to verify images load)
-    document.getElementById("debugLogo").innerHTML = `Logo: <a href="${logo}" target="_blank">${logo}</a>`;
-    document.getElementById("debugBg1").innerHTML  = `Photo 1: <a href="${bg1}" target="_blank">${bg1}</a>`;
-    document.getElementById("debugBg2").innerHTML  = `Photo 2: <a href="${bg2}" target="_blank">${bg2}</a>`;
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
